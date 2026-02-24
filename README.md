@@ -41,3 +41,39 @@ Here are a couple of thoughts about the domain that could influence your respons
 * What might happen if the client needs to change the random divisor?
 * What might happen if the client needs to add another special case (like the random twist)?
 * What might happen if sales closes a new client in France?
+
+# Solution
+
+## How to Run
+
+### Prerequisites
+
+- An `input.txt` file in the current directory with one transaction per line (e.g. `2.13,3.00`).
+- Results are printed to the console and written to `output.txt` in the same directory.
+
+### With Go
+
+```bash
+go run .
+```
+
+Or build first and then run the binary:
+
+```bash
+go build -o cashregister .
+./cashregister
+```
+
+### With Docker
+
+Build the image:
+
+```bash
+docker build -t cashregister .
+```
+
+Run it, mounting your current directory so the container can read `input.txt` and write `output.txt` back to the host:
+
+```bash
+docker run --rm -v $(pwd):/data cashregister
+```
