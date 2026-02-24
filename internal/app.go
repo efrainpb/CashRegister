@@ -9,17 +9,21 @@ import (
 	"os"
 )
 
+const (
+	inputFile = "input.txt"
+)
+
 func Run() error {
-	f, err := os.Open("input.txt")
+	f, err := os.Open(inputFile)
 	if err != nil {
 		return fmt.Errorf("failed to open file: %v", err)
 	}
 	defer f.Close()
 
-	currrency := currency.NewUSD()
+	currency := currency.NewUSD()
 
 	processTransactions := application.NewProcessTransactions(domain.AmountDivisor)
 	controller := infrastructure.NewFileController(processTransactions, f)
-	controller.ProcessTransactions(currrency)
+	controller.ProcessTransactions(currency)
 	return nil
 }
