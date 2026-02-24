@@ -8,7 +8,9 @@ import (
 func NewProcessTransactions(
 	amountDivisor int,
 ) *ProcessTransactions {
-	return &ProcessTransactions{}
+	return &ProcessTransactions{
+		amountDivisor: amountDivisor,
+	}
 }
 
 type ProcessTransactions struct {
@@ -38,8 +40,9 @@ func (p *ProcessTransactions) processTransaction(t domain.Transaction, denominat
 
 	if p.amountDivisor%t.Change() == 0 {
 		strategy = calculator.NewRandomChangeCalculator()
+	} else {
+		strategy = calculator.NewGreedyChangeCalculator()
 	}
-	strategy = calculator.NewGreedyChangeCalculator()
 
 	changeResult.Items = strategy.Calculate(t.Change(), denominations)
 	changeResult.Transaction = t

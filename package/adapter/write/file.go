@@ -39,8 +39,8 @@ func (w *FileChangeWriter) Writer(_ context.Context) error {
 }
 
 func (w *FileChangeWriter) Close() error {
-	if w.file != nil {
-		return w.file.Close()
+	if w.file == nil {
+		return nil
 	}
 	if err := w.file.Close(); err != nil {
 		return fmt.Errorf("closing output file %q: %w", w.path, err)

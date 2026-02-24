@@ -35,13 +35,13 @@ func (f *FileController) ProcessTransactions(currency domain.Currency) []domain.
 	// output to console
 	consoleWriter := write.NewConsoleChangeWriter(results, os.Stdout, currency)
 	if err := consoleWriter.Writer(context.Background()); err != nil {
-		fmt.Fprintln(os.Stderr, "error writing to console: %v\n", err)
+		fmt.Println("error writing to console:", err)
 	}
 
 	// output to file
 	fileWriter := write.NewFileChangeWriter("output.txt", results, os.Stdout, currency)
 	if err := fileWriter.Writer(context.Background()); err != nil {
-		fmt.Fprintln(os.Stderr, "error writing to file: %v\n", err)
+		fmt.Println("error writing to file:", err)
 	}
 
 	return results
