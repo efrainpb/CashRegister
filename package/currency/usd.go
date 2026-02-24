@@ -25,7 +25,7 @@ func (u *USD) Denominations() []domain.Denomination {
 func (u *USD) FormatChange(items []domain.ChangeItem) string {
 	parts := make([]string, 0)
 	for _, item := range items {
-		parts = append(parts, fmt.Sprintf("%s %d", item.Denomination.Name, item.Count))
+		parts = append(parts, fmt.Sprintf("%d %s", item.Count, item.Denomination.Name))
 	}
 	return strings.Join(parts, ", ")
 }
