@@ -1,5 +1,7 @@
 package domain
 
+const AmountDivisor = 3
+
 type Denomination struct {
 	Name  string
 	Value int

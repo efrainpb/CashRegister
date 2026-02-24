@@ -2,6 +2,7 @@ package app
 
 import (
 	"efrainpb/truefit-cashregister/internal/application"
+	"efrainpb/truefit-cashregister/internal/domain"
 	"efrainpb/truefit-cashregister/internal/infrastructure"
 	"efrainpb/truefit-cashregister/package/currency"
 	"fmt"
@@ -17,7 +18,7 @@ func Run() error {
 
 	currrency := currency.NewUSD()
 
-	processTransactions := application.NewProcessTransactions(3)
+	processTransactions := application.NewProcessTransactions(domain.AmountDivisor)
 	controller := infrastructure.NewFileController(processTransactions, f)
 	controller.ProcessTransactions(currrency)
 	return nil
