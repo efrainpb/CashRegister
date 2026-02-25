@@ -39,10 +39,10 @@ func (f *FileController) ProcessTransactions(currency domain.Currency) []domain.
 	}
 
 	// output to file
-	/*fileWriter := write.NewFileChangeWriter("output.txt", results, os.Stdout, currency)
+	fileWriter := write.NewFileChangeWriter("output.txt", results, os.Stdout, currency)
 	if err := fileWriter.Writer(context.Background()); err != nil {
 		fmt.Println("error writing to file:", err)
-	}*/
+	}
 
 	return results
 }
