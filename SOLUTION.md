@@ -179,6 +179,35 @@ Invalid lines (malformed, unparseable amounts, or paid < owed) are logged and sk
 
 ---
 
+## Running Tests
+
+### Run all tests
+
+```bash
+go test ./...
+```
+
+### Run with coverage report
+
+```bash
+go test ./... -coverprofile=coverage.out
+go tool cover -func=coverage.out
+```
+
+### View coverage in browser
+
+```bash
+go tool cover -html=coverage.out
+```
+
+### Run a specific package
+
+```bash
+go test ./internal/application/calculator/...
+```
+
+---
+
 ## Running the Application
 
 ### With Go

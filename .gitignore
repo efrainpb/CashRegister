@@ -20,3 +20,5 @@ tmp/
 
 # output files
 output.txt
+coverage.out
+truefit-cashregister
