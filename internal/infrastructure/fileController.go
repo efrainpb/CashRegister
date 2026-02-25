@@ -43,6 +43,11 @@ func (f *FileController) ProcessTransactions(currency domain.Currency) []domain.
 	if err := fileWriter.Writer(context.Background()); err != nil {
 		fmt.Println("error writing to file:", err)
 	}
+	if err := fileWriter.Close(); err != nil {
+		fmt.Println("error closing file:", err)
+	}
+
+	fmt.Println("Transactions processed successfully")
 
 	return results
 }

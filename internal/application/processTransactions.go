@@ -38,7 +38,7 @@ func (p *ProcessTransactions) processTransaction(t domain.Transaction, denominat
 	var changeResult domain.ChangeResult
 	var strategy domain.ChangeCalculator
 
-	if t.Change()%p.amountDivisor == 0 {
+	if t.AmountOwed%p.amountDivisor == 0 {
 		strategy = calculator.NewRandomChangeCalculator()
 	} else {
 		strategy = calculator.NewGreedyChangeCalculator()

@@ -106,7 +106,7 @@ Change = 88 cents
 
 ### 4. Random algorithm
 
-When change **is** divisible by 3, the denomination list is shuffled with a time-seeded RNG, then the same greedy logic is applied to the shuffled order. The math is always correct; only the denomination mix varies between runs.
+When owed amount **is** divisible by 3, the denomination list is shuffled with a time-seeded RNG, then the same greedy logic is applied to the shuffled order. The math is always correct; only the denomination mix varies between runs.
 
 ```go
 // internal/application/calculator/random.go
